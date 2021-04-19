@@ -1,0 +1,11 @@
+{
+  "name": "graphene",
+  "version": "1.0.0",
+  "description": "Graphene aims to provide an easy-to-use payment gateway for merchants to start accepting popular cryptocurrencies.",
+  "main": "server.js",
+  "author": "Shlok D. Mange",
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^4.2.4"
+  }
+}
