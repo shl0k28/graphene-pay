@@ -10,13 +10,13 @@ const Navbar: React.FC<INavbar> = ({
 }) => {
     return(
         <nav className="px-8 py-4 flex items-center justify-between">
-            <div style={{fontFamily:"'Krub', sans-serif"}}>
-                <h1 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-green-500 to-blue-500">
+            <div style={{fontFamily:"'Raleway', sans-serif"}}>
+                <h1 className="text-2xl lg:text-3xl tracking-wider font-bold text-gray-800 ">
                     {header}
                 </h1>
             </div>
             <div>
-                <GiHamburgerMenu className="text-2xl"/>
+                <GiHamburgerMenu className="text-xl lg:hidden text-gray-900"/>
             </div>
         </nav>
     )
