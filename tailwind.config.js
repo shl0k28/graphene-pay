@@ -10,6 +10,9 @@ module.exports = {
         teal: colors.teal,
         cyan: colors.cyan,
         fuchsia: colors.fuchsia
+      },
+      animation: {
+        'pulse-slow': "pulse 5s linear infinite"
       }
     },
   },
