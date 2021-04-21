@@ -12,7 +12,7 @@ const Navbar: React.FC<INavbar> = ({
         <nav className="px-8 py-4 flex items-center justify-between">
             <div style={{fontFamily:"'Raleway', sans-serif"}}>
                 <h1 className="text-2xl lg:text-3xl tracking-wider font-bold text-gray-800 ">
-                    {header} <span className="text-xs">βeta</span>
+                    {header} <span className="text-xs">[βeta]</span>
                 </h1>
             </div>
             <div>
