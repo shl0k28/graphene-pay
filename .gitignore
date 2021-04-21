@@ -4,6 +4,9 @@
 /node_modules
 /.pnp
 .pnp.js
+/src/.secret
+/src/.paypal
+/server/node_modules
 
 # testing
 /coverage
