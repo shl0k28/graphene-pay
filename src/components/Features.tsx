@@ -5,17 +5,17 @@ import data from '../assets/data.svg'
 
 const features = [
     {
-        title: 'Highly Secure',
+        title: 'Unbreakable Security',
         para: `Receive funds with utmost security, directly into your wallet.`,
         svg: security
     },
     {
-        title: 'Accessible to All',
+        title: 'Go Global',
         para: `Sell your products everywhere in the world. No bank accounts, no comissions, no hassle.`,
         svg: world
     },
     {
-        title: 'Permanent Ledger',
+        title: 'Never lose your data.',
         para: `Your transactions are recorded permanently. No mishaps, no data loss. `,
         svg: data
     },
@@ -27,19 +27,11 @@ const Features: React.FC = () => {
             <h1 className="text-center font-bold text-3xl" style={{fontFamily:"'Krub', sans-serif"}}>
                 Why Crypto?
             </h1>
-            <div className="space-y-8">
+            <div className="flex space-x-2">
                 {
                     features.map((feature, index) => {
                         return(
-                            <div key={index} className="space-y-4">
-                                <img src={feature.svg} alt={feature.title}/>
-                                <h1 className="text-center font-bold text-2xl" style={{fontFamily:"'Raleway', sans-serif"}}>
-                                    {feature.title}
-                                </h1>
-                                <p style={{fontFamily:"'Krub', sans-serif"}} className="text-center font-medium text-lg text-gray-700">
-                                    {feature.para}
-                                </p>
-                            </div>
+                            <FeatureCard feature={feature} key={index}/>
                         )
                     })
                 }
@@ -48,4 +40,31 @@ const Features: React.FC = () => {
     )
 }
 
+interface IFeatureCard {
+    feature: {
+        title: string;
+        para: string;
+        svg: string;
+    }
+}
+
+const FeatureCard: React.FC<IFeatureCard> = ({feature}) => {
+    return(
+        <div>
+            <div>
+                <div className="flex justify-center">
+                    <img src={feature.svg} alt="" className="max-w-sm"/>
+                </div>
+                <div className="space-y-4">
+                    <h1 style={{fontFamily:"'Raleway', sans-serif"}} className="text-center text-2xl text-gray-800 font-semibold">
+                        {feature.title}
+                    </h1>
+                    <p className="text-center text-gray-700 tracking-tight text-lg " style={{fontFamily:"'Rubik', sans-serif"}}>
+                        {feature.para}
+                    </p>
+                </div>
+            </div>
+        </div>
+    )
+}
 export default Features
