@@ -13,7 +13,7 @@ const Landing: React.FC = () => {
             <Navbar header="cryρtex"/>
             <Hero />
             <Features />
-            <Newsletter />
+            {/* <Newsletter /> */}
             <Footer />
         </div>
     )

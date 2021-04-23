@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
     return(
         <footer className={`${footerContainer}`}>
              <div className="lg:text-lg">
-                 <p>&copy;Axion Labs. All rights res.</p>
+                 <p>&copy;Axion Labs.</p>
              </div>
              <div className="flex items-center space-x-4 lg:text-2xl lg:space-x-8">
                 <FaRedditAlien />

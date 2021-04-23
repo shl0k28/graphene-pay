@@ -2,7 +2,10 @@ import React from 'react'
 import { render } from 'react-dom'
 import './index.css'
 import { BrowserRouter, Switch, Route} from 'react-router-dom'
+
+//pages
 import Landing from './pages/Landing'
+import TestRipple from './pages/TestRipple'
 
 const App: React.FC = () => {
 	return(
@@ -12,7 +15,8 @@ const App: React.FC = () => {
 			</style>
 			<BrowserRouter>
 				<Switch>
-					<Route path='/' component={Landing}/>
+					<Route exact path='/' component={Landing}/>
+					<Route path='/test' component={TestRipple}/>
 				</Switch>
 			</BrowserRouter>
 		</div>
