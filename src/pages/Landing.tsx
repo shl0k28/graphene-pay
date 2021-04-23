@@ -2,6 +2,7 @@ import React from 'react'
 
 //components
 import Features from '../components/Features'
+import Footer from '../components/Footer'
 import Hero from '../components/Hero'
 import Navbar from '../components/Navbar'
 import Newsletter from '../components/Newsletter'
@@ -12,9 +13,8 @@ const Landing: React.FC = () => {
             <Navbar header="cryρtex"/>
             <Hero />
             <Features />
-            {/* <div className="flex justify-center"> */}
-                <Newsletter />
-            {/* </div> */}
+            <Newsletter />
+            <Footer />
         </div>
     )
 }
