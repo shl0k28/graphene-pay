@@ -1,5 +1,6 @@
 import React from 'react'
 import { GiHamburgerMenu } from 'react-icons/gi'
+import { NavLink } from 'react-router-dom'
 
 interface INavbar {
     header: string;
