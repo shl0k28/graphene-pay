@@ -59,6 +59,18 @@ const titleMsg = `Choose your preferred method of payment`
 const iconClass = ` text-2xl hover:bg-gray-100 cursor-pointer p-2`
 
 const CryptexCheckout: React.FC = () => {
+    const [paymentProvider, setPaymentProvider] = React.useState<string | null>(null)
+
+    return(
+        <div>
+            {
+                paymentProvider === null && <SelectPaymentProvider />
+            }
+        </div>
+    )
+}
+
+const SelectPaymentProvider: React.FC = () => {
     return(
         <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
