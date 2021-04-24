@@ -11,7 +11,9 @@ const PrivateRoute: React.FC<Props> = ({component, path}) => {
     
     const { user } = useAuth()
     
-    return user ? <Route component={component} path={path}/> : <Redirect to="/login" />
+    return user 
+    ? <Route component={component} path={path}/> 
+    : <Redirect to="/login" />
 }
 
 export default PrivateRoute
