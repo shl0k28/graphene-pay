@@ -39,6 +39,7 @@ const TestRipple: React.FC = () => {
         // 4-> Submit the signed transaction
         var earliestLedgerVersion = (await api.getLedgerVersion()) + 1
         var result = await api.submit(txBlob)
+        console.log(`Result: ${result}`)
         console.log(`Result: ${result.resultMessage}, code: ${result.resultCode}`)
     }
 

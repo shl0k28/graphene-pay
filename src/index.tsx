@@ -6,6 +6,7 @@ import { BrowserRouter, Switch, Route} from 'react-router-dom'
 //pages
 import Landing from './pages/Landing'
 import TestRipple from './pages/TestRipple'
+import Login from './pages/Login'
 
 const App: React.FC = () => {
 	return(
@@ -17,6 +18,7 @@ const App: React.FC = () => {
 				<Switch>
 					<Route exact path='/' component={Landing}/>
 					<Route path='/test' component={TestRipple}/>
+					<Route path='/login' component={Login}/>
 				</Switch>
 			</BrowserRouter>
 		</div>
