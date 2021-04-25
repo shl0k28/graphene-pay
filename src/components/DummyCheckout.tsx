@@ -150,19 +150,23 @@ const SelectWallet: React.FC<ISelectWallet> = ({paymentProvider}) => {
             {
                 account === null 
                 && paymentProvider 
-                ? <ChooseProvider paymentProvider={paymentProvider}/>
-                : <></> 
+                ? <ChooseProvider 
+                    paymentProvider={paymentProvider}
+                    initProvider={initProvider}
+                /> : <ShowAccountInfo account={account} /> 
             }
         </div>
     )
 }
 
 interface IChooseProvider {
-    paymentProvider: string;    
+    paymentProvider: string;
+    initProvider: () => Promise<void> | {}    
 }
 
 const ChooseProvider: React.FC<IChooseProvider> = ({
-    paymentProvider
+    paymentProvider,
+    initProvider
 }) => {
     switch(paymentProvider){
         case "ETH":
@@ -181,16 +185,17 @@ const ChooseProvider: React.FC<IChooseProvider> = ({
 }
 
 interface IShowAccount {
-    account: string
+    account: string | null
 }
 
 const ShowAccountInfo: React.FC<IShowAccount> = ({
     account
 }) => {
     return(
-        <>
-            {account}
-        </>
+        <div className="px-4 py-2">
+            <h1 className="text-xl">Your account:</h1>
+            <p className="text-purple-700">{account}</p>
+        </div>
     )
 }
 
