@@ -156,7 +156,7 @@ const SelectWallet: React.FC<ISelectWallet> = ({paymentProvider}) => {
                 ? <ChooseProvider 
                     paymentProvider={paymentProvider}
                     initProvider={initProvider}
-                /> : <ShowAccountInfo account={account} /> 
+                /> : <ShowAccountInfo account={account} web3={provider}/> 
             }
         </div>
     )
@@ -188,11 +188,13 @@ const ChooseProvider: React.FC<IChooseProvider> = ({
 }
 
 interface IShowAccount {
-    account: string | null
+    account: string | null,
+    web3: Web3 | null
 }
 
 const ShowAccountInfo: React.FC<IShowAccount> = ({
-    account
+    account,
+    web3
 }) => {
 
     React.useEffect(() => {
@@ -231,6 +233,23 @@ const ShowAccountInfo: React.FC<IShowAccount> = ({
         }
     }
 
+    const transact = async (
+        web3: Web3 | null,
+        address: string,
+        from: string,
+        to: string
+    ) => {
+        if(web3){
+            const contract = await web3.eth.sendTransaction({
+                chainId: 80001,
+                value: web3.utils.toWei(new BN(1)),
+                from,
+                to
+            })
+        }
+    }
+
+    const toAddress = `0x03f142529a7B70305C07a50fAA44f6EBDADB4624`
     return(
         <div className="px-4 py-2 space-y-2">
             <h1 className="text-xl">Your account:</h1>
@@ -243,6 +262,13 @@ const ShowAccountInfo: React.FC<IShowAccount> = ({
                             <div key={index}>
                                 <h1>{token.name}</h1>
                                 <p>Available: <span className="text-green-500">{token.balance}</span></p>
+                                <button onClick={() => {
+                                    if(account){
+                                        transact(web3, token.contractAddress, account, toAddress )}
+                                    }
+                                } className="p-2 bg-blue-500 text-gray-50">
+                                    Pay with {token.symbol}
+                                </button>
                             </div>
                         )
                     })
