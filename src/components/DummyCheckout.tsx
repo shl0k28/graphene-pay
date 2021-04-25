@@ -11,6 +11,8 @@ import { SiBitcoin, SiXrp } from 'react-icons/si'
 import Portis from '../assets/portis.png'
 import { getTokens } from '../api/covalent'
 
+import BN from 'bn.js'
+
 const buttonClass = `focus:outline-none w-full hover:shadow-md p-2 text-gray-100 flex items-center justify-center`
 
 const DummyCheckout: React.FC = () => {
@@ -150,7 +152,7 @@ const SelectWallet: React.FC<ISelectWallet> = ({paymentProvider}) => {
         <div>
             {
                 account === null 
-                && paymentProvider 
+                && paymentProvider !== null
                 ? <ChooseProvider 
                     paymentProvider={paymentProvider}
                     initProvider={initProvider}
@@ -197,20 +199,55 @@ const ShowAccountInfo: React.FC<IShowAccount> = ({
         showTokens()
     }, [])
     
+    interface Tokendata {
+        name: string;
+        balance: string;
+        contractAddress: string;
+        symbol: string;
+    }
+
+    const [tokenData, setTokenData] = React.useState<Array<Tokendata>>([])
+    const [tokenInfo, setTokenInfo] = React.useState<Tokendata>({
+        balance: '',
+        name: '',
+        contractAddress: '',
+        symbol: ''
+    })
+
     const showTokens = async () => {
         if(account){
             var tokenData = await getTokens(80001, account)
             tokenData.data.items.map((token: any) => {
                 console.log("Token: ", token.contract_name)
                 console.log("Balance: ", token.balance)
+                const tokenInfo: Tokendata = {
+                    balance: token.balance,
+                    contractAddress: token.contract_address,
+                    name: token.contract_name,
+                    symbol: token.contract_ticker_symbol
+                }
+                setTokenData(state => [...state, tokenInfo])
             })
         }
     }
 
     return(
-        <div className="px-4 py-2">
+        <div className="px-4 py-2 space-y-2">
             <h1 className="text-xl">Your account:</h1>
             <p className="text-purple-700">{account}</p>
+            <div className="space-y-4">
+                {
+                    tokenData.map((token, index) => {
+                        const num = new BN(token.balance)
+                        return(
+                            <div key={index}>
+                                <h1>{token.name}</h1>
+                                <p>Available: <span className="text-green-500">{token.balance}</span></p>
+                            </div>
+                        )
+                    })
+                }
+            </div>
         </div>
     )
 }
