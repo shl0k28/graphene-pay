@@ -1,5 +1,4 @@
 import React from 'react'
-import { Contract, ethers } from 'ethers'
 import Web3 from 'web3'
 import { portis } from '../config/portis'
 
@@ -8,6 +7,9 @@ import { BsArrowRight } from 'react-icons/bs'
 import { BiCreditCard, BiBitcoin } from 'react-icons/bi'
 import { FaEthereum } from 'react-icons/fa'
 import { SiBitcoin, SiXrp } from 'react-icons/si'
+import { AiOutlineFileDone } from 'react-icons/ai'
+import { HiOutlineExternalLink } from 'react-icons/hi'
+
 import Portis from '../assets/portis.png'
 import { getTokens } from '../api/covalent'
 
@@ -216,6 +218,9 @@ const ShowAccountInfo: React.FC<IShowAccount> = ({
         symbol: ''
     })
 
+    const [transactionStatus, setTransactionStatus] = React.useState<boolean | null>(null)
+    const [txHash, setTxHash] = React.useState<string | null>(null)
+
     const showTokens = async () => {
         if(account){
             var tokenData = await getTokens(80001, account)
@@ -242,40 +247,74 @@ const ShowAccountInfo: React.FC<IShowAccount> = ({
         if(web3){
             const contract = await web3.eth.sendTransaction({
                 chainId: 80001,
-                value: web3.utils.toWei(new BN(1)),
+                value: web3.utils.toWei(new BN(0.1)),
                 from,
                 to
             })
+            var txHash = contract.transactionHash
+            var txIndex = contract.transactionIndex
+            if(txHash && txIndex){
+                setTransactionStatus(true)
+                setTxHash(txHash)
+                console.log('txHash', txHash)
+            }
+            else {
+                setTransactionStatus(false)
+            }
         }
     }
 
     const toAddress = `0x03f142529a7B70305C07a50fAA44f6EBDADB4624`
-    return(
-        <div className="px-4 py-2 space-y-2">
-            <h1 className="text-xl">Your account:</h1>
-            <p className="text-purple-700">{account}</p>
-            <div className="space-y-4">
-                {
-                    tokenData.map((token, index) => {
-                        const num = new BN(token.balance)
-                        return(
-                            <div key={index}>
-                                <h1>{token.name}</h1>
-                                <p>Available: <span className="text-green-500">{token.balance}</span></p>
-                                <button onClick={() => {
-                                    if(account){
-                                        transact(web3, token.contractAddress, account, toAddress )}
-                                    }
-                                } className="p-2 bg-blue-500 text-gray-50">
-                                    Pay with {token.symbol}
-                                </button>
-                            </div>
-                        )
-                    })
-                }
+    const txVerify = `https://explorer-mumbai.maticvigil.com/tx`
+
+    if(!transactionStatus){
+        return(
+            <div className="px-4 py-2 space-y-2">
+                <h1 className="text-xl">Your account:</h1>
+                <p className="text-purple-700">{account}</p>
+                <div className="space-y-4">
+                    {
+                        tokenData.map((token, index) => {
+                            const num = new BN(token.balance)
+                            return(
+                                <div key={index}>
+                                    <h1>{token.name}</h1>
+                                    <p>Available: <span className="text-green-500">{token.balance}</span></p>
+                                    <button onClick={() => {
+                                        if(account){
+                                            transact(web3, token.contractAddress, account, toAddress )}
+                                        }
+                                    } className="p-2 bg-blue-500 text-gray-50">
+                                        Pay with {token.symbol}
+                                    </button>
+                                </div>
+                            )
+                        })
+                    }
+                </div>
             </div>
-        </div>
-    )
+        )
+    }
+    else {
+        return(
+            <div className="px-4 py-2 space-y-4">
+                <div className="flex items-center justify-center text-green-500 text-xl space-x-2">
+                    <AiOutlineFileDone />
+                    <h1>Payment Completed.</h1>
+                </div>
+                <div>
+                    <h2 className="text-center text-gray-700 text-lg">Receipt Id:</h2>
+                    <p className="text-sm text-blue-700">{txHash}</p>
+                </div>
+                <div>
+                    <a href={`${txVerify}/${txHash}/internal-transactions`} target="_black" className="underline flex items-center justify-center text-blue-600">
+                        <p className="text-center">Verify Transaction</p>
+                        <HiOutlineExternalLink />
+                    </a>
+                </div>
+            </div>
+        )
+    }
 }
 
 export default DummyCheckout
