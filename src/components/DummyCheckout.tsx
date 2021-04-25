@@ -145,6 +145,25 @@ const SelectWallet: React.FC<ISelectWallet> = ({paymentProvider}) => {
         setAccount(accounts[0])
     }
 
+    return(
+        <div>
+            {
+                account === null 
+                && paymentProvider 
+                ? <ChooseProvider paymentProvider={paymentProvider}/>
+                : <></> 
+            }
+        </div>
+    )
+}
+
+interface IChooseProvider {
+    paymentProvider: string;    
+}
+
+const ChooseProvider: React.FC<IChooseProvider> = ({
+    paymentProvider
+}) => {
     switch(paymentProvider){
         case "ETH":
             return(
@@ -159,6 +178,20 @@ const SelectWallet: React.FC<ISelectWallet> = ({paymentProvider}) => {
 
         default: return (<></>)
     }
+}
+
+interface IShowAccount {
+    account: string
+}
+
+const ShowAccountInfo: React.FC<IShowAccount> = ({
+    account
+}) => {
+    return(
+        <>
+            {account}
+        </>
+    )
 }
 
 export default DummyCheckout
