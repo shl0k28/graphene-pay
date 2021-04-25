@@ -1,4 +1,7 @@
 import React from 'react'
+import { Contract, ethers } from 'ethers'
+import Web3 from 'web3'
+import { portis } from '../config/portis'
 
 //icons
 import { BsArrowRight } from 'react-icons/bs'
@@ -68,7 +71,7 @@ const CryptexCheckout: React.FC = () => {
                     {
                         paymentProvider === null 
                         ? <SelectPaymentProvider setPaymentProvider={setPaymentProvider}/>
-                        : <SelectWallet />
+                        : <SelectWallet paymentProvider={paymentProvider}/>
                     }
                 </div>
             </div>
@@ -83,28 +86,28 @@ interface IPaymentProvider {
 const SelectPaymentProvider: React.FC<IPaymentProvider> = ({setPaymentProvider}) => {
     return(
         <div>
-                    <div className="px-8 py-4">
-                        <h1>{titleMsg}</h1>
+            <div className="px-8 py-4">
+                <h1>{titleMsg}</h1>
+            </div>
+            <div className="px-8 py-4 flex items-center justify-between">
+                <div className={`${iconClass} text-yellow-400 `}>
+                    <div className="flex justify-center">
+                        <SiBitcoin 
+                            className="text-3xl text-center" 
+                            name="BTC"
+                            onClick={() => setPaymentProvider("BTC")}
+                        />
                     </div>
-                    <div className="px-8 py-4 flex items-center justify-between">
-                        <div className={`${iconClass} text-yellow-400 `}>
-                            <div className="flex justify-center">
-                                <SiBitcoin 
-                                    className="text-3xl text-center" 
-                                    name="BTC"
-                                    onClick={() => setPaymentProvider("BTC")}
-                                />
-                            </div>
-                            <p>Bitcoin </p>
+                        <p>Bitcoin </p>
+                    </div>
+                    <div className={`${iconClass} text-gray-900`}>
+                        <div className="flex justify-center">
+                            <FaEthereum 
+                                className="text-3xl" 
+                                name="ETH"
+                                onClick={() => setPaymentProvider("ETH")}
+                            />
                         </div>
-                        <div className={`${iconClass} text-gray-900`}>
-                            <div className="flex justify-center">
-                                <FaEthereum 
-                                    className="text-3xl" 
-                                    name="ETH"
-                                    onClick={() => setPaymentProvider("ETH")}
-                                />
-                            </div>
                             <p>Ethereum </p>
                         </div>
                         <div className={`${iconClass} text-green-900`}>
@@ -122,16 +125,40 @@ const SelectPaymentProvider: React.FC<IPaymentProvider> = ({setPaymentProvider})
     )
 }
 
-const SelectWallet: React.FC = () => {
-    return(
-        <div className="px-8 py-4">
-            <h1>Choose your preferred wallet</h1>
-            <div className="flex justify-center items-center space-y-2 hover:bg-gray-200 w-auto px-4 py-2 rounded-md cursor-pointer">
-                <img src={Portis} className="h-24" onClick={() => {}}/>
-                {/* <img src={Portis} className="h-24"/> */}
-            </div>
-        </div>
-    )
+interface ISelectWallet {
+    paymentProvider: string | null;
+}
+
+const SelectWallet: React.FC<ISelectWallet> = ({paymentProvider}) => {
+
+    const [provider, setProvider] = React.useState<
+        Web3 | null
+    >(null)
+    const [account, setAccount] = React.useState<string | null>(null)
+    
+    const initProvider = async () => {
+        //@ts-ignore
+        const web3 = new Web3(portis.provider)
+        setProvider(web3)
+        const accounts = await web3.eth.getAccounts()
+        console.log(accounts[0])
+        setAccount(accounts[0])
+    }
+
+    switch(paymentProvider){
+        case "ETH":
+            return(
+                <div className="px-8 py-4">
+                    <h1>Choose your preferred wallet</h1>
+                    <div className="flex justify-center items-center space-y-2 hover:bg-gray-200 w-auto px-4 py-2 rounded-md cursor-pointer">
+                        <img src={Portis} className="h-24" onClick={initProvider}/>
+                        {/* <img src={Portis} className="h-24"/> */}
+                    </div>
+                </div>
+            )
+
+        default: return (<></>)
+    }
 }
 
 export default DummyCheckout
