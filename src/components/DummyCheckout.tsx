@@ -9,6 +9,7 @@ import { BiCreditCard, BiBitcoin } from 'react-icons/bi'
 import { FaEthereum } from 'react-icons/fa'
 import { SiBitcoin, SiXrp } from 'react-icons/si'
 import Portis from '../assets/portis.png'
+import { getTokens } from '../api/covalent'
 
 const buttonClass = `focus:outline-none w-full hover:shadow-md p-2 text-gray-100 flex items-center justify-center`
 
@@ -191,6 +192,21 @@ interface IShowAccount {
 const ShowAccountInfo: React.FC<IShowAccount> = ({
     account
 }) => {
+
+    React.useEffect(() => {
+        showTokens()
+    }, [])
+    
+    const showTokens = async () => {
+        if(account){
+            var tokenData = await getTokens(80001, account)
+            tokenData.data.items.map((token: any) => {
+                console.log("Token: ", token.contract_name)
+                console.log("Balance: ", token.balance)
+            })
+        }
+    }
+
     return(
         <div className="px-4 py-2">
             <h1 className="text-xl">Your account:</h1>
