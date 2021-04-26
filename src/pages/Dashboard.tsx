@@ -7,7 +7,7 @@ const Dashboard: React.FC = () => {
     const { logout } = useAuth()
 
     return(
-        <div className="h-screen w-screen bg-gray-100">
+        <div className="h-screen w-screen bg-gray-100 overflow-x-hidden">
             <Topbar />
             <UserApps />
         </div>
