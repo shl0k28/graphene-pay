@@ -7,6 +7,9 @@ import { BrowserRouter, Switch, Route} from 'react-router-dom'
 import Landing from './pages/Landing'
 import TestRipple from './pages/TestRipple'
 import Login from './pages/Login'
+import Dashboard from './pages/Dashboard'
+
+import PrivateRoute from './routes/PrivateRoute'
 import UserContextProvider from './context/AuthContext'
 
 const App: React.FC = () => {
@@ -21,6 +24,7 @@ const App: React.FC = () => {
 					<Route exact path='/' component={Landing}/>
 					<Route path='/test' component={TestRipple}/>
 					<Route path='/login' component={Login}/>
+					<PrivateRoute path='/dashboard' component={Dashboard} />
 				</Switch>
 			</BrowserRouter>
 			</UserContextProvider>

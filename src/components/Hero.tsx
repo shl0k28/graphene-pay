@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import eth from '../assets/ethereal_gray.svg'
 
 const headerTxt = `Accept Cryptocurrencies for your Online Store`
@@ -17,8 +18,11 @@ const Hero: React.FC = () => {
                     </h1>
                     <p className="text-center text-xl text-gray-500 lg:text-left lg:text-2xl">{paraTxt}</p>
                 </div>
-                <div className="mt-4 flex justify-center lg:justify-start" style={{fontFamily:"'Poppins', sans-serif"}}>
+                <div className="mt-4 flex justify-center lg:justify-start space-x-4" style={{fontFamily:"'Poppins', sans-serif"}}>
                     <button className="p-2 bg-gray-800 text-gray-200 w-full lg:w-auto">Get Started</button>
+                    <NavLink to="/test" className="p-2 border border-gray-900">
+                        Test Demo
+                    </NavLink>
                 </div>
             </div>
         </div>

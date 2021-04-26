@@ -307,7 +307,12 @@ const ShowAccountInfo: React.FC<IShowAccount> = ({
                     <p className="text-sm text-blue-700">{txHash}</p>
                 </div>
                 <div>
-                    <a href={`${txVerify}/${txHash}/internal-transactions`} target="_black" className="underline flex items-center justify-center text-blue-600">
+                    <a 
+                        href={`${txVerify}/${txHash}/internal-transactions`} 
+                        target="_black" 
+                        className="underline flex items-center justify-center text-blue-600"
+                        rel="noopener"
+                    >
                         <p className="text-center">Verify Transaction</p>
                         <HiOutlineExternalLink />
                     </a>

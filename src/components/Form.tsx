@@ -1,14 +1,33 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Redirect, useHistory } from 'react-router-dom'
+import { useAuth } from '../context/AuthContext'
 
 const Form: React.FC = () => {
     const emailRef = React.createRef<HTMLInputElement>()
     const passwordRef = React.createRef<HTMLInputElement>()
 
+    const { loginWithEmail } = useAuth()
+    const history = useHistory()
+
+    const signIn = async (
+        email: string, 
+        password: string
+    ) => {
+        try {
+            var res = await loginWithEmail(email, password)
+            if(res?.user){
+                history.push('/dashboard')            
+            }
+        }
+        catch(err){
+            console.error(err)
+        }
+    }
+
     return(
         <div className="px-8 py-4 lg:px-16 md:flex md:justify-center">
-            <section className="space-y-4 rounded-md border p-2 bg-white shadow-md md:w-1/3" style={{fontFamily:"'Poppins', sans-serif"}}>
-                <h1 style={{fontFamily:"'Raleway', sans-serif"}} className="text-xl text-center font-bold">
+            <section className="space-y-4 rounded-md p-2  md:w-1/3" style={{fontFamily:"'Poppins', sans-serif"}}>
+                <h1 style={{fontFamily:"'Raleway', sans-serif"}} className="text-2xl text-center font-bold">
                     Login to cryρtex
                 </h1>
                 <div className="space-y-1">
@@ -34,7 +53,13 @@ const Form: React.FC = () => {
                     </div>
                 </div>
                 <div>
-                    <button className="w-full p-2 bg-gray-900 text-gray-200">Login</button>
+                    <button 
+                        className="w-full p-2 bg-gray-900 text-gray-200"
+                        // @ts-ignore
+                        onClick={() => signIn(emailRef.current?.value, passwordRef.current?.value)}
+                    >
+                        Login
+                    </button>
                 </div>
                 <div className="flex items-center justify-between underline">
                     <NavLink to='/' className="text-sm">Forgot Password?</NavLink>

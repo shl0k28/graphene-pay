@@ -7,7 +7,7 @@ const rippleTestServer = 'wss://s.altnet.rippletest.net:51233'
 
 const TestRipple: React.FC = () => {
 
-    /* const initRipple = async () => {
+     const initRipple = async () => {
         var api = new RippleAPI({
             server: rippleTestServer 
         })
@@ -45,7 +45,6 @@ const TestRipple: React.FC = () => {
         console.log(`Result: ${result.resultMessage}, code: ${result.resultCode}`)
     }
 
-    */
 
     return(
         <div className="h-screen w-screen bg-gray-100">
