@@ -1,12 +1,14 @@
 import React from 'react'
+import Topbar from '../components/dashboard/Topbar'
 import { useAuth } from '../context/AuthContext'
 
 const Dashboard: React.FC = () => {
     const { logout } = useAuth()
+    
     return(
-        <>
-            <button onClick={logout}>Logout</button>
-        </>
+        <div className="h-screen w-screen bg-gray-100">
+            <Topbar />
+        </div>
     )
 }
 

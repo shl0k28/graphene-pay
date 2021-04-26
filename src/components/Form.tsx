@@ -3,6 +3,7 @@ import { NavLink, Redirect, useHistory } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 
 const Form: React.FC = () => {
+    
     const emailRef = React.createRef<HTMLInputElement>()
     const passwordRef = React.createRef<HTMLInputElement>()
 
