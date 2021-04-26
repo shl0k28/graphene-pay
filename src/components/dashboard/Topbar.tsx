@@ -2,7 +2,7 @@ import React from 'react'
 import { BsFillCaretDownFill } from 'react-icons/bs'
 import { GrSettingsOption, GrTransaction } from 'react-icons/gr'
 import { SiReadthedocs } from 'react-icons/si'
-import { RiAccountCircleFill, RiAccountCircleLine } from 'react-icons/ri'
+import { RiAccountCircleLine } from 'react-icons/ri'
 import { NavLink } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
 
