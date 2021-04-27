@@ -2,9 +2,9 @@ import React from 'react'
 import { SiEthereum } from 'react-icons/si'
 import { CgWebsite } from 'react-icons/cg'
 import { v4 as uuidv4} from 'uuid'
-import { GrCopy } from 'react-icons/gr'
 import { RiFileCopyLine } from 'react-icons/ri'
 import { AiOutlineEdit, AiOutlineMore } from 'react-icons/ai'
+import { IoMdAddCircleOutline } from 'react-icons/io'
 
 const gateways = [
     {
@@ -35,7 +35,7 @@ const UserApps: React.FC = () => {
             <h1 className="font-semibold text-2xl text-gray-800 tracking-wide">
                 Your Gateways:
             </h1>
-            <section>
+            <section className="space-y-4">
                 <div className="flex space-x-4 overflow-x-auto">
                     {
                         gateways.map((app) => {
@@ -66,6 +66,16 @@ const UserApps: React.FC = () => {
                             )
                         })
                     }
+                </div>
+                <div className="bg-white shadow-md px-8 py-4 max-w-sm">
+                    <div className="border border-dashed border-gray-400 p-4 rounded-md cursor-pointer hover:bg-gray-50">
+                        <div className="flex justify-center">
+                            <IoMdAddCircleOutline className="text-5xl text-gray-600"/>
+                        </div>
+                        <p className="text-center">
+                            Create a New Payment Gateway.
+                        </p>
+                    </div>
                 </div>
             </section>
         </div>
