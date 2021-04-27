@@ -5,6 +5,7 @@ import { v4 as uuidv4} from 'uuid'
 import { RiFileCopyLine } from 'react-icons/ri'
 import { AiOutlineEdit, AiOutlineMore } from 'react-icons/ai'
 import { IoMdAddCircleOutline } from 'react-icons/io'
+import NewGatewayModal from './NewGatewayModal'
 
 const gateways = [
     {
@@ -28,7 +29,11 @@ const UserApps: React.FC = () => {
     const copyToClipboard = async (text: string) => {
         await navigator.clipboard.writeText(text)
         console.log('Copied to clipboard')
+        setCopyToClip(`${text} copied to clipboard.`)
     }
+
+    const [newGateway, setNewGateway] = React.useState<boolean>(false)
+    const [copyToClip, setCopyToClip] = React.useState<boolean | string>(false)
 
     return(
         <div className="px-16 py-4 space-y-4" style={{fontFamily:"'Raleway', sans-serif"}}>
@@ -68,7 +73,7 @@ const UserApps: React.FC = () => {
                     }
                 </div>
                 <div className="bg-white shadow-md px-8 py-4 max-w-sm">
-                    <div className="border border-dashed border-gray-400 p-4 rounded-md cursor-pointer hover:bg-gray-50">
+                    <div onClick={() => setNewGateway(true)} className="border border-dashed border-gray-400 p-4 rounded-md cursor-pointer hover:bg-gray-50">
                         <div className="flex justify-center">
                             <IoMdAddCircleOutline className="text-5xl text-gray-600"/>
                         </div>
@@ -77,6 +82,9 @@ const UserApps: React.FC = () => {
                         </p>
                     </div>
                 </div>
+                {
+                    newGateway && <NewGatewayModal />
+                }
             </section>
         </div>
     )
