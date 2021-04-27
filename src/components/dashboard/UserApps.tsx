@@ -24,6 +24,12 @@ const gateways = [
 ]
 
 const UserApps: React.FC = () => {
+
+    const copyToClipboard = async (text: string) => {
+        await navigator.clipboard.writeText(text)
+        console.log('Copied to clipboard')
+    }
+
     return(
         <div className="px-16 py-4 space-y-4" style={{fontFamily:"'Raleway', sans-serif"}}>
             <h1 className="font-semibold text-2xl text-gray-800 tracking-wide">
@@ -38,7 +44,7 @@ const UserApps: React.FC = () => {
                                     <h1 className="text-xl border-b font-medium">{app.name}</h1>
                                     <div className="flex items-center space-x-2">
                                         <p>ID: <span className="text-gray-700 bg-gray-200 px-2 py-1 rounded-md">{app.client_id}</span></p>
-                                        <RiFileCopyLine className="text-gray-600 cursor-pointer"/>
+                                        <RiFileCopyLine className="text-gray-600 cursor-pointer" onClick={() => copyToClipboard(app.client_id)}/>
                                     </div>
                                     <div className="flex items-center">
                                         <CgWebsite />
