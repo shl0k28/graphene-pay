@@ -13,14 +13,14 @@ const gateways = [
         website: 'https://localhost:3000',
         client_id: uuidv4(),
         eth_address: '0xe4b2a861b10fb8b07a87e140ec98e11225624aa0',
-        name: `Shlok's ecommerce site.`
+        name: `New ecommerce site.`
     },
     {
         gateway_id: '2',
         website: 'https://localhost:3000',
         client_id: uuidv4(),
         eth_address: '0xd48a52571c8f3fbe57833b89b872f020e6a642af',
-        name: `Shlok's personal site.`
+        name: `New personal site.`
     },
 ]
 
@@ -43,7 +43,7 @@ const UserApps: React.FC = () => {
             <section className="space-y-4">
                 <div className="flex space-x-4 overflow-x-auto">
                     {
-                        gateways.map((app) => {
+                        gateways && gateways.map((app) => {
                             return(
                                 <div key={app.gateway_id} className="space-y-4 px-4 py-2 bg-white shadow-md">
                                     <h1 className="text-xl border-b font-medium">{app.name}</h1>
@@ -83,7 +83,7 @@ const UserApps: React.FC = () => {
                     </div>
                 </div>
                 {
-                    newGateway && <NewGatewayModal />
+                    newGateway && <NewGatewayModal setNewGateway={setNewGateway}/>
                 }
             </section>
         </div>
