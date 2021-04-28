@@ -62,7 +62,7 @@ const UserApps: React.FC = () => {
                                     name,
                                     site
                                 }
-                                setPaymentGateways(state => [...state, newGateway])
+                                setPaymentGateways(state => [newGateway])
                             })
                         })
                 
