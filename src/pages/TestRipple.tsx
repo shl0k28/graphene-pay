@@ -48,7 +48,7 @@ const TestRipple: React.FC = () => {
 
     return(
         <div className="h-screen w-screen bg-gray-100">
-            <Navbar header="pay w/ cryptex" />
+            <Navbar header="pay w/ cryptify" />
             <DummyCheckout />
         </div>
     )
