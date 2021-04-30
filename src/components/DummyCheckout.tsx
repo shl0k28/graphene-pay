@@ -14,6 +14,7 @@ import Portis from '../assets/portis.png'
 import { getTokens } from '../api/covalent'
 
 import BN from 'bn.js'
+import PaymentTestNew from './PaymentTestNew'
 
 const buttonClass = `focus:outline-none w-full hover:shadow-md p-2 text-gray-100 flex items-center justify-center`
 
@@ -53,7 +54,7 @@ const DummyCheckout: React.FC = () => {
                 </div>
             </div>
             {
-                isPayment && <CryptexCheckout />
+                isPayment && <PaymentTestNew />
             }
         </section>
     )

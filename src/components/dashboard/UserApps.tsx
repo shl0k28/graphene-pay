@@ -45,9 +45,14 @@ const UserApps: React.FC = () => {
         setCopyToClip(`${text} copied to clipboard.`)
     }
 
-    const [paymentGateways, setPaymentGateways] = React.useState<Array<IGateway>>([])
+    const [paymentGateways, setPaymentGateways] = React.useState<
+        Array<IGateway>
+    >([])
 
     const getPaymentGateways = async () => {
+        var allGateways: Array<IGateway> = []
+        console.log(`Before: `,allGateways)
+
         var res = await firebaseRef.
                         collection('users').
                         doc(user?.uid).
@@ -62,9 +67,13 @@ const UserApps: React.FC = () => {
                                     name,
                                     site
                                 }
-                                setPaymentGateways(state => [newGateway])
+                                console.log(newGateway)
+                                // @ts-ignore
+                                allGateways.push(newGateway)
+                                setPaymentGateways(allGateways)
                             })
                         })
+        console.log(`After: `, allGateways)
                 
     }
 
@@ -83,7 +92,7 @@ const UserApps: React.FC = () => {
             <section className="space-y-4">
                 <div className="flex space-x-4 overflow-x-auto">
                     {
-                        paymentGateways ? paymentGateways.map((app, index) => {
+                        paymentGateways.map((app, index) => {
                             return(
                                 <div key={index} className="space-y-4 px-4 py-2 bg-white shadow-md">
                                     <h1 className="text-xl border-b font-medium">{app.name}</h1>
@@ -109,9 +118,7 @@ const UserApps: React.FC = () => {
                                     </div>
                                 </div>
                             )
-                        }) : (
-                            <></>
-                        )
+                        })
                     }
                 </div>
                 <div className="bg-white shadow-md px-8 py-4 max-w-sm">

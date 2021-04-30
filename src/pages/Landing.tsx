@@ -9,7 +9,7 @@ import Navbar from '../components/Navbar'
 const Landing: React.FC = () => {
     return(
         <div className="bg-gray-100 overflow-y-auto h-screen w-screen space-y-4">
-            <Navbar header="cryρtex"/>
+            <Navbar header="cryρtify"/>
             <Hero />
             <Features />
             <Footer />
