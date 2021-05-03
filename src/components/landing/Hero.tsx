@@ -36,15 +36,15 @@ const Hero: React.FC = () => {
         
 <div className="overflow-hidden relative px-8">
     <div className="text-start w-1/2 py-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
-        <h2 className="space-y-2 text-3xl font-extrabold text-black sm:text-4xl">
+        <h2 className="space-y-2 text-3xl font-extrabold text-black sm:text-4xl" style={{fontFamily:"'Raleway', sans-serif"}}>
             <span className="block">
                 {headerTxt}
             </span>
-            <span className="block text-2xl text-indigo-500 font-mono">
+            {/* <span className="block text-2xl text-indigo-500">
                 No commissions. No accounts. No BS.
-            </span>
+            </span> */}
         </h2>
-        <p className="text-xl mt-4 text-gray-400" >
+        <p className="text-xl mt-4 text-gray-700" style={{fontFamily:"'Krub', sans-serif"}}>
             {paraTxt}
         </p>
         <div className="lg:mt-0 lg:flex-shrink-0">

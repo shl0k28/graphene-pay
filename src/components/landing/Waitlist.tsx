@@ -1,32 +1,33 @@
 import React from 'react'
+import wtlist from '../../assets/waitlist.svg'
 
 const Waitlist: React.FC = () => {
-    return(
-        
-<div className="px-6 py-6 bg-purple-700 dark:bg-gray-800 rounded-lg md:py-12 md:px-12 lg:py-16 lg:px-16 xl:flex xl:items-center">
-    <div className="xl:w-0 xl:flex-1">
-        <h2 className="text-2xl leading-8 font-extrabold tracking-tight text-white sm:text-3xl sm:leading-9">
-            Receive alert about new commit or pull request on your github
-        </h2>
-        <p className="mt-3 max-w-3xl text-lg leading-6 text-indigo-200">
-            No account or email required. We use push notifications. You can choose between several modes and define your own alert threshold.
-        </p>
-    </div>
-    <div className="mt-8 sm:w-full sm:max-w-md xl:mt-0 xl:ml-8">
-        <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3 sm:flex-shrink-0">
-            <button className="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-purple-500 hover:bg-purple-400 focus:outline-none focus:bg-purple-400 transition duration-150 ease-in-out">
-                Notify me
-            </button>
+    return(        
+        <div style={{fontFamily:"'Krub', sans-serif"}} className="px-6 py-6  md:py-12 md:px-12 lg:py-16 lg:px-16 xl:flex xl:items-center">
+            <div className="relative px-4 py-6 overflow-hidden sm:px-6 sm:py-8 lg:p-12 xl:p-16">
+                <h2 className="text-2xl font-semibold font-display text-gray-900 sm:text-3xl">
+                    Join our exclusive waitlist!
+                </h2>
+                <p className="mt-2 max-w-xl text-base text-gray-700">
+                    We'll get back to you within 24 hours to schedule a demo & custom integrations for your store.
+                </p>
+        <form>
+            <div className="sm:flex jusitfy-start mt-6">
+                <form className="flex w-full max-w-sm space-x-3">
+                    <div className=" relative ">
+                        <input type="text" id="&quot;form-subscribe-Subscribe" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Email"/>
+                        </div>
+                        <button className="flex-shrink-0 px-4 py-2 text-base font-semibold text-white bg-indigo-600 rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200" type="submit">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </form>
         </div>
-        <p className="mt-3 text-sm leading-5 text-indigo-200">
-            We care about the protection of your data. Your data is safe and never used for commercial purposes.
-        </p>
-        <p className="text-sm leading-5 text-indigo-200">
-            In order to receive the notifications, you must give permission sufficient to your web browser.
-        </p>
+        <div className="hidden lg:block lg:left-2/3 xl:left-1/2 right-0">
+            <img src={wtlist} alt=""/>
+        </div>
     </div>
-</div>
-
     )
 }
 
