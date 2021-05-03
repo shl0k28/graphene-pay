@@ -1,10 +1,10 @@
 import React from 'react'
 
-import Navbar from '../components/landing/Navbar'
 //components
+import Navbar from '../components/landing/Navbar'
+import Hero from '../components/landing/Hero'
 import Features from '../components/Features'
 import Footer from '../components/Footer'
-import Hero from '../components/Hero'
 
 const Landing: React.FC = () => {
     return(
