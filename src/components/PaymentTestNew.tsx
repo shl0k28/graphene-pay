@@ -24,18 +24,17 @@ const PaymentModule: React.FC = () => {
     switch(paymentProvider){
         case 'BTC':
             return(<>Pay with Bitcoin</>);
-            break;
 
         case 'ETH':
             return(<>Pay with Ethereum</>);
-            break;
 
         case 'CELO':
             return(<>Pay with Celo</>);
-            break;
 
         default:
-            return <SelectCurrency />
+            return <SelectCurrency 
+                selectPaymentProvider={setPaymentProvider}
+            />
     }
 }
 

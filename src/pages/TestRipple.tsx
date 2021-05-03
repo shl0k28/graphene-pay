@@ -1,7 +1,7 @@
 import React from 'react'
 import { RippleAPI } from 'ripple-lib'
 import DummyCheckout from '../components/DummyCheckout'
-import Navbar from '../components/Navbar'
+import Navbar from '../components/landing/Navbar'
 
 const rippleTestServer = 'wss://s.altnet.rippletest.net:51233'
 

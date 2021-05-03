@@ -6,10 +6,13 @@ import { GrBitcoin } from 'react-icons/gr'
 import { SiEthereum } from 'react-icons/si'
 import { NavLink } from 'react-router-dom'
 
-const SelectCurrency: React.FC = () => {
+interface Props {
+    selectPaymentProvider: React.Dispatch<React.SetStateAction<string | null>>;
+}
 
-    const [paymentProvider, setPaymentProvider] = React.useState('Bitcoin')
-    
+const SelectCurrency: React.FC<Props> = ({
+    selectPaymentProvider
+}) => {
     return(
         <section className="px-8 py-4 space-y-4">
             <div className="flex space-x-32 items-center">
@@ -20,19 +23,19 @@ const SelectCurrency: React.FC = () => {
                 <div className="shadow p-1 hover:bg-gray-100">
                     <div className="flex items-center space-x-4 w-full">
                         <GrBitcoin className="text-yellow-400"/>
-                        <button>Bitcoin</button>
+                        <button onClick={() => selectPaymentProvider('BTC')}>Bitcoin</button>
                     </div>
                 </div>
                 <div className="shadow p-1 hover:bg-gray-100">
                     <div className="flex items-center space-x-4 w-full">
                         <SiEthereum className="text-gray-800"/>
-                        <button>Ethereum</button>
+                        <button onClick={() => selectPaymentProvider('ETH')}>Ethereum</button>
                     </div>
                 </div>
                 <div className="shadow p-1 hover:bg-gray-100">
                     <div className="flex items-center space-x-4 w-full">
                         <GiLinkedRings className="text-green-400"/>
-                        <button>Celo</button>
+                        <button onClick={() => selectPaymentProvider('CELO')}>Celo</button>
                     </div>
                 </div>
             </div>
