@@ -7,15 +7,16 @@ interface INavbar {
     header: string;
 }
 
-const Navbar: React.FC<INavbar> = ({
-    header
-}) => {
+const Navbar: React.FC = () => {
     return(
-        <nav className="bg-white px-8 py-4 flex items-center justify-between lg:px-16">
-            <div style={{fontFamily:"'Raleway', sans-serif"}}>
+        <nav className="border-b bg-white px-8 py-4 flex items-center justify-between lg:px-16">
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
+            </style>
+            <div style={{fontFamily:"'Inconsolata', sans-serif"}}>
                 <h1 className="flex items-center text-indigo-600 text-2xl lg:text-3xl tracking-wider font-bold ">
                     {/* <img src={logo} alt="" className="h-12 w-12"/> */}
-                    {header} <span className="text-xs">[βeta]</span>
+                    cryptify <span className="text-xs">[βeta]</span>
                 </h1>
             </div>
             <div>

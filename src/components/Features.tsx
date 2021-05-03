@@ -1,33 +1,37 @@
 import React from 'react'
-import security from '../assets/security.svg'
+import security from '../assets/coins.svg'
+import commission from '../assets/commission.svg'
 import world from '../assets/world.svg'
-import data from '../assets/data.svg'
+import js from '../assets/js.svg'
 
-const features = [
-    {
-        title: 'Unbreakable Security',
-        para: `Receive funds with utmost security, directly into your wallet.`,
-        svg: security
-    },
-    {
-        title: 'Go Global',
-        para: `No bank accounts, no comissions, no hassle.`,
-        svg: world
-    },
-    {
-        title: 'Never lose your data.',
-        para: `Your transactions are recorded permanently. No mishaps, no data loss. `,
-        svg: data
-    },
-]
+// const features = [
+//     {
+//         title: 'Unbreakable Security',
+//         para: `Receive funds with utmost security, directly into your wallet.`,
+//         svg: security
+//     },
+//     {
+//         title: 'Go Global',
+//         para: `No bank accounts, no comissions, no hassle.`,
+//         svg: world
+//     },
+//     {
+//         title: 'Never lose your data.',
+//         para: `Your transactions are recorded permanently. No mishaps, no data loss. `,
+//         svg: data
+//     },
+// ]
 
 const Features: React.FC = () => {
     return(
         <div className="px-8 py-4 space-y-8">
-            <h1 className="text-center font-bold text-4xl" style={{fontFamily:"'Krub', sans-serif"}}>
-                Why Crypto?
-            </h1>
-            <div className="lg:flex lg:space-x-2 ">
+            <div className="space-y-4" style={{fontFamily:"'Krub', sans-serif"}}>
+                <h1 className="font-semibold text-3xl text-gray-800 text-center" >
+                    Bridging the gap between centralized & decentralized finance.
+                </h1>
+                <p className="text-center text-gray-700 font-medium">Go for cryptify now and save yourself from future regrets</p>
+            </div>
+            {/* <div className="lg:flex lg:space-x-2 ">
                 <div className="lg:px-4 lg:flex lg:space-x-3 space-y-4 lg:space-y-0">
                     {
                         features.map((feature, index) => {
@@ -37,7 +41,53 @@ const Features: React.FC = () => {
                         })
                     }
                 </div>
+            </div> */}
+            
+<div className="sm:flex flex-wrap justify-center items-center text-center gap-8" style={{fontFamily:"'Rubik', sans-serif"}}>
+    <div className="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 px-4 py-4 bg-white mt-6 shadow-lg rounded-lg x" >
+        <div className="flex-shrink-0">
+            <div className="flex items-center mx-auto justify-center rounded-md bg-indigo-500 text-white">
+                <img src={security} alt=""/>
             </div>
+        </div>
+        <h3 className="text-2xl sm:text-xl text-gray-700 font-semibold py-4">
+            Your Keys, Your Coins
+        </h3>
+        <p className="text-md  text-gray-500 py-4">
+            We don't own any of your funds, simply connect your existing wallet and start accepting.
+        </p>
+    </div>
+    <div className="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 px-4 py-4 mt-6 sm:mt-16 md:mt-20 lg:mt-24 bg-white shadow-lg rounded-lg">
+        <div className="flex-shrink-0">
+            <div className="flex items-center mx-auto justify-center rounded-md bg-indigo-500 text-white">
+                <img src={commission} alt=""/>
+            </div>
+        </div>
+        <h3 className="text-2xl sm:text-xl text-gray-700 font-semibold py-4">
+            No commission. No BS.
+        </h3>
+        <p className="text-md text-gray-500 py-4">
+            We don't charge any commission, and we have very fast processing speeds :)
+        </p>
+    </div>
+    <div className="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 mt-6  px-4 py-4 bg-white shadow-lg rounded-lg">
+        <div className="flex-shrink-0">
+            <div className="flex items-center mx-auto justify-center rounded-md bg-indigo-500 text-white">
+                <img src={js} alt=""/>
+            </div>
+        </div>
+        <h3 className="text-2xl sm:text-xl text-gray-700 font-semibold py-4">
+            Super easy to integrate
+        </h3>
+        <p className="text-md  text-gray-500 py-4">
+            Just 1-line of code snippet, add it to your website and we'll handle the payments.
+        </p>
+        <p className="text-xs text-gray-800 ">
+        * P.S : We'll be personally integrating it on your website initially and provide 24/7 support :)
+        </p>
+    </div>
+</div>
+
         </div>
     )
 }

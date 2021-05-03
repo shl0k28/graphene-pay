@@ -21,16 +21,17 @@ const Footer: React.FC = () => {
                     </div>
                 </div>
                 <div className="flex items-center space-x-4 lg:text-2xl lg:space-x-8">
-                    <FaRedditAlien />
-                    <FaDiscord />
-                    <GrTwitter />
-                    <FaLinkedinIn />
+                    <FaRedditAlien className="hover:text-gray-500 cursor-pointer"/>
+                    <FaDiscord className="hover:text-gray-500 cursor-pointer"/>
+                    <GrTwitter className="hover:text-gray-500 cursor-pointer"/>
+                    <FaLinkedinIn className="hover:text-gray-500 cursor-pointer"/>
                 </div>
             </div>
             <div className="space-x-4 px-16 text-gray-600 flex items-center justify-end text-sm" style={{fontFamily:"'Rubik', sans-serif"}}>
                 <NavLink to="/" className="hover:underline">Terms & Conditions</NavLink>
                 <NavLink to="/" className="hover:underline">Privacy Policy</NavLink>
                 <NavLink to="/" className="hover:underline">GDPR</NavLink>
+                <NavLink to="/" className="hover:underline">Docs</NavLink>
             </div>
         </footer>
     )

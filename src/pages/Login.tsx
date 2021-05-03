@@ -5,7 +5,7 @@ import Navbar from '../components/landing/Navbar'
 const Login: React.FC = () => {
     return(
         <div className="h-screen w-screen bg-gray-100">
-            <Navbar header="cryρtex"/>
+            <Navbar/>
             <Form />
         </div>
     )
