@@ -5,6 +5,7 @@ import Navbar from '../components/landing/Navbar'
 import Hero from '../components/landing/Hero'
 import Features from '../components/Features'
 import Footer from '../components/Footer'
+import Waitlist from '../components/landing/Waitlist'
 
 const Landing: React.FC = () => {
     return(
@@ -12,6 +13,7 @@ const Landing: React.FC = () => {
             <Navbar header="cryρtify"/>
             <Hero />
             <Features />
+            <Waitlist />
             <Footer />
         </div>
     )

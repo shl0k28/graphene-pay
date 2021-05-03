@@ -40,7 +40,7 @@ const Hero: React.FC = () => {
             <span className="block">
                 {headerTxt}
             </span>
-            <span className="block text-2xl text-indigo-500" style={{fontFamily:"'Roboto', sans-serif"}}>
+            <span className="block text-2xl text-indigo-500 font-mono">
                 No commissions. No accounts. No BS.
             </span>
         </h2>
