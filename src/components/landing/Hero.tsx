@@ -1,11 +1,16 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { openPopupWidget } from 'react-calendly'
 import eth from '../../assets/ethereal_gray.svg'
 
 const headerTxt = `Accept Cryptocurrencies for your Online Store`
 const paraTxt = `The easiest way to integrate crypto payments on your online store.`
 
 const Hero: React.FC = () => {
+
+    const openCalendly = () => {
+        openPopupWidget({url: "https://calendly.com/shlok-mange"})
+    }
+
     return(        
         <div className="overflow-hidden relative px-24">
             <style>
@@ -30,10 +35,11 @@ const Hero: React.FC = () => {
                         </button>
                     </div>
                     <div className="ml-3 inline-flex rounded-md shadow">
-                        <button type="button" className="py-4 px-6  bg-gray-800 hover:bg-gray-700 focus:ring-gray-500 focus:ring-offset-gray-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
-                            Test Demo
+                        <button onClick={openCalendly} type="button" className="py-4 px-6  bg-gray-800 hover:bg-gray-700 focus:ring-gray-500 focus:ring-offset-gray-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                            Book a Demo
                         </button>
                     </div>
+                    {/* <InlineWidget url="https://calendly.com/shlok-mange"/> */}
                 </div>
             </div>
             <img src={eth} className="absolute h-full max-w-1/2 hidden lg:block right-24 top-0"/>

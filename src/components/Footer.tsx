@@ -15,12 +15,15 @@ const Footer: React.FC = () => {
                     <p>&copy;indebit Labs.</p>
                 </div>
                 <div className="hidden lg:block">
-                    <div className="flex items-center space-x-2">
-                        <AiFillMail className="text-lg"/>
-                        <p>shlok@indebit.tech</p>
+                    <div className="flex items-center space-x-4 text-gray-500">        
+                        <NavLink to="/" className="hover:underline">T&C.</NavLink>
+                        <NavLink to="/" className="hover:underline">Privacy Policy</NavLink>
+                        <NavLink to="/" className="hover:underline">GDPR</NavLink>
+                        <NavLink to="/" className="hover:underline">Docs</NavLink>
                     </div>
                 </div>
                 <div className="flex items-center space-x-4 lg:text-2xl lg:space-x-8">
+                    <AiFillMail className="text-lg"/>
                     <FaRedditAlien className="hover:text-gray-500 cursor-pointer"/>
                     <FaDiscord className="hover:text-gray-500 cursor-pointer"/>
                     <GrTwitter className="hover:text-gray-500 cursor-pointer"/>
@@ -28,10 +31,6 @@ const Footer: React.FC = () => {
                 </div>
             </div>
             <div className="space-x-4 px-16 text-gray-600 flex items-center justify-end text-sm" style={{fontFamily:"'Rubik', sans-serif"}}>
-                <NavLink to="/" className="hover:underline">Terms & Conditions</NavLink>
-                <NavLink to="/" className="hover:underline">Privacy Policy</NavLink>
-                <NavLink to="/" className="hover:underline">GDPR</NavLink>
-                <NavLink to="/" className="hover:underline">Docs</NavLink>
             </div>
         </footer>
     )
