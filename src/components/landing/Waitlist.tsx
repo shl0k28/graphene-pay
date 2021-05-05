@@ -1,5 +1,7 @@
 import React from 'react'
 import wtlist from '../../assets/waitlist.svg'
+// @ts-ignore
+import validator from 'validator'
 import { firebaseRef } from '../../config/firebase'
 import firebase from 'firebase'
 
@@ -8,19 +10,24 @@ const Waitlist: React.FC = () => {
     //users signup for the waitlist
     const addToWaitlist = async () => {
         const email = emailRef.current?.value
-        try {
-            const res = await firebaseRef.collection(`waitlist`).add({
-                email,
-                registered_at: firebase.firestore.Timestamp.now()
-            })
-            alert(`Thank you for signing up, we'll contact you within 24 hours.`)
+        if(validator.isEmail(email)){
+            try {
+                const res = await firebaseRef.collection(`waitlist`).add({
+                    email,
+                    registered_at: firebase.firestore.Timestamp.now()
+                })
+                alert(`Thank you for signing up, we'll contact you within 24 hours.`)
+            }
+            catch(err){
+                console.error(err)
+            }
         }
-        catch(err){
-            console.error(err)
+        else {
+            console.error('Please enter a valid email id.')
         }
     }
 
-    const emailRef = React.useRef<HTMLInputElement | null>(null)
+    var emailRef = React.useRef<HTMLInputElement | null>(null)
 
     return(        
         <div style={{fontFamily:"'Krub', sans-serif"}} className=" px-6 py-6  md:py-12 md:px-12 lg:py-16 lg:px-16 xl:flex xl:items-center">

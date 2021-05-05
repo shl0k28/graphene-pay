@@ -1,5 +1,6 @@
 import React from 'react'
 import { openPopupWidget } from 'react-calendly'
+
 import eth from '../../assets/ethereal_gray.svg'
 
 const headerTxt = `Accept Cryptocurrencies for your Online Store`
@@ -12,18 +13,15 @@ const Hero: React.FC = () => {
     }
 
     return(        
-        <div className="overflow-hidden relative px-24">
+        <div className="overflow-hidden lg:relative lg:px-24">
             <style>
                 @import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Krub:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
             </style>
-            <div className="text-start w-1/2 py-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
+            <div className="text-center md:w-1/2 py-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
                 <h2 className="space-y-2 text-3xl text-gray-900 sm:text-4xl font-bold" style={{fontFamily:"'Rubik', sans-serif"}}>
                     <span className="block">
                         {headerTxt}
                     </span>
-            {/* <span className="block text-2xl text-indigo-500">
-                No commissions. No accounts. No BS.
-            </span> */}
                 </h2>
                 <p className="font-semibold text-xl mt-4 text-gray-800">
                     {paraTxt}
@@ -42,7 +40,7 @@ const Hero: React.FC = () => {
                     {/* <InlineWidget url="https://calendly.com/shlok-mange"/> */}
                 </div>
             </div>
-            <img src={eth} className="absolute h-full max-w-1/2 hidden lg:block right-24 top-0"/>
+            <img src={eth} className="lg:absolute lg:h-full max-w-1/2 lg:block right-24 top-0"/>
         </div>
     )
 }
