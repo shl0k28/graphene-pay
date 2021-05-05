@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink, Redirect, useHistory } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import { FcGoogle } from 'react-icons/fc'
 
 const Form: React.FC = () => {
     
@@ -27,44 +28,54 @@ const Form: React.FC = () => {
 
     return(
         <div className="px-8 py-4 lg:px-16 md:flex md:justify-center">
-            <section className="space-y-4 rounded-md p-2  md:w-1/3" style={{fontFamily:"'Poppins', sans-serif"}}>
-                <h1 style={{fontFamily:"'Raleway', sans-serif"}} className="text-2xl text-center font-bold">
-                    Login to cryρtex
-                </h1>
-                <div className="space-y-1">
-                    <label htmlFor="email" className="text-lg">Email</label>
-                    <div>
-                        <input 
-                            type="email" 
-                            className="border w-full px-2 py-1 shadow"
-                            ref={emailRef}
-                            placeholder="yourname@company.com"
-                        />
-                    </div>
-                </div>
-                <div className="space-y-1">
-                    <label htmlFor="password" className="text-lg ">Password</label>
-                    <div>
-                        <input 
-                            type="password" 
-                            className="border w-full px-2 py-1 shadow"
-                            ref={passwordRef}
-                            placeholder="**********"
-                        />
-                    </div>
-                </div>
+            <section className="space-y-4 rounded-md p-2  md:w-1/4" style={{fontFamily:"'Rubik', sans-serif"}}>
                 <div>
-                    <button 
-                        className="w-full p-2 bg-gray-900 text-gray-200"
-                        // @ts-ignore
-                        onClick={() => signIn(emailRef.current?.value, passwordRef.current?.value)}
-                    >
-                        Login
-                    </button>
+                    <p className="text-center">Don't have an account yet?</p>
+                    <p className="text-indigo-600 text-center underline">Signup for the beta</p>
                 </div>
-                <div className="flex items-center justify-between underline">
-                    <NavLink to='/' className="text-sm">Forgot Password?</NavLink>
-                    <NavLink to='/' className="text-sm">Signup Here</NavLink>
+                <button className="flex items-center justify-between bg-white px-2 w-full py-1 shadow-md hover:bg-gray-100 hover:text-gray-800">
+                    <div className="justify-start">
+                        <FcGoogle /> 
+                    </div>
+                    <p className="justify-center">
+                        Continue With Google
+                    </p>
+                    <div></div>
+                </button>
+                <p className="text-center text-gray-500 text-sm">or sign in with email</p>
+                <div className="space-y-4">
+                    <div className="space-y-1">
+                        <div>
+                            <input 
+                                type="email" 
+                                className="border w-full px-2 py-1 shadow"
+                                ref={emailRef}
+                                placeholder="yourname@company.com"
+                            />
+                        </div>
+                    </div>
+                    <div className="space-y-1">
+                        <div>
+                            <input 
+                                type="password" 
+                                className="border w-full px-2 py-1 shadow"
+                                ref={passwordRef}
+                                placeholder="**********"
+                            />
+                        </div>
+                    </div>
+                    <div>
+                        <button 
+                            className="w-full p-2 bg-indigo-700 text-gray-50"
+                            // @ts-ignore
+                            onClick={() => signIn(emailRef.current?.value, passwordRef.current?.value)}
+                        >
+                            Sign In
+                        </button>
+                    </div>
+                </div>
+                <div className="flex items-center justify-center underline">
+                    <NavLink to='/' className="text-sm text-indigo-600">Forgot Your Password?</NavLink>
                 </div>
             </section>
         </div>
