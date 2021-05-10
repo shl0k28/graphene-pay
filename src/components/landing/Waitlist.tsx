@@ -2,11 +2,16 @@ import React from 'react'
 import wtlist from '../../assets/waitlist.svg'
 import axios from 'axios'
 import { apiUrl } from '../..'
+import { getIpDetails } from '../../api/ip'
 
 const Waitlist: React.FC = () => {
 
     var [email, setEmail] = React.useState('')
     var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i)
+    
+    React.useEffect(() => {
+        getIpDetails()
+    })
     
     const addToWaitlist = async () => {
         console.log(`Beginning function`)
@@ -15,6 +20,8 @@ const Waitlist: React.FC = () => {
                 email
             })
             console.log(res.data)
+            setEmail('')
+            alert('Thank your for joining cryptify in our journey for a decentralized financial future.')
         }
         else {
             alert('Please enter a valid email id.')
