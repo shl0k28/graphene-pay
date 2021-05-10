@@ -1,14 +1,26 @@
 import React from 'react'
-import { v4 as uuidv4 } from 'uuid'
 import wtlist from '../../assets/waitlist.svg'
-// @ts-ignore
-import validator from 'validator'
-import { firebaseRef } from '../../config/firebase'
-import firebase from 'firebase'
+import axios from 'axios'
+import { apiUrl } from '../..'
 
 const Waitlist: React.FC = () => {
 
     var [email, setEmail] = React.useState('')
+    var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i)
+    
+    const addToWaitlist = async () => {
+        console.log(`Beginning function`)
+        if(pattern.test(email)){
+            const res = await axios.post(`${apiUrl}/addToWaitlist`, {
+                email
+            })
+            console.log(res.data)
+        }
+        else {
+            alert('Please enter a valid email id.')
+            setEmail('')
+        }
+    }
 
     return(        
         <div style={{fontFamily:"'Krub', sans-serif"}} className=" px-6 py-6  md:py-12 md:px-12 lg:py-16 lg:px-16 xl:flex xl:items-center">
@@ -32,7 +44,7 @@ const Waitlist: React.FC = () => {
                                     placeholder="Email"
                                 />
                             </div>
-                            <button onClick={() => {}} className="flex-shrink-0 px-4 py-2 text-base font-semibold text-white bg-indigo-600 rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200" type="submit">
+                            <button onClick={addToWaitlist} className="flex-shrink-0 px-4 py-2 text-base font-semibold text-white bg-indigo-600 rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200" type="submit">
                                 Subscribe
                             </button>
                         </div>
