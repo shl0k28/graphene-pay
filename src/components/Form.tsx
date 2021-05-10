@@ -75,7 +75,9 @@ const Form: React.FC = () => {
                     </div>
                 </div>
                 <div className="flex items-center justify-center underline">
-                    <NavLink to='/' className="text-sm text-indigo-600">Forgot Your Password?</NavLink>
+                    <NavLink to='/' className="text-sm text-indigo-600">
+                        Forgot Your Password?
+                    </NavLink>
                 </div>
             </section>
         </div>

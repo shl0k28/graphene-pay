@@ -12,6 +12,8 @@ import Dashboard from './pages/Dashboard'
 import PrivateRoute from './routes/PrivateRoute'
 import UserContextProvider from './context/AuthContext'
 
+export const apiUrl = `http://localhost:8080`
+
 const App: React.FC = () => {
 	return(
 		<div>

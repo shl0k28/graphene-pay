@@ -2764,6 +2764,45 @@
     "@stablelib/random" "^1.0.0"
     "@stablelib/wipe" "^1.0.0"
 
+"@supabase/gotrue-js@^1.13.3":
+  version "1.13.4"
+  resolved "https://registry.yarnpkg.com/@supabase/gotrue-js/-/gotrue-js-1.13.4.tgz#3a40a0c299a55ece2b992a2e585fa090cd5f57e0"
+  integrity sha512-Z1ydBF9D3v6xKm02ipMHGKq6kASNrla1pmn0dSxPu1T935orocohpsJlsf1A8eS0m2JQI5OuuUqhVCGhH3dwtQ==
+  dependencies:
+    cross-fetch "^3.0.6"
+
+"@supabase/postgrest-js@^0.28.1":
+  version "0.28.2"
+  resolved "https://registry.yarnpkg.com/@supabase/postgrest-js/-/postgrest-js-0.28.2.tgz#b3c13ab4e12370356c80d441aac28cd46e0fdcf9"
+  integrity sha512-Qv2xCZBR6uDyDXShF33xyMaeVhvKSesWeKGAT1JOUqE+To6G61vXxTrUtitPihSEZYdWgc7k1gQzbXhMCGHb4w==
+  dependencies:
+    cross-fetch "^3.0.6"
+
+"@supabase/realtime-js@^1.0.9":
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/@supabase/realtime-js/-/realtime-js-1.0.9.tgz#a4be4f893be78db4487ad2c9de155a4a07532eae"
+  integrity sha512-hGClyW7hHXW0PC6reJgaKFL0c3ubC+AVt7U/MxD0VJNjVXIw4PLj7DxgMpCIpNXksHJsLOBL8ht+BMhPb6rE8Q==
+  dependencies:
+    "@types/websocket" "^1.0.1"
+    websocket "^1.0.34"
+
+"@supabase/storage-js@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@supabase/storage-js/-/storage-js-1.0.2.tgz#8fa3bd2b683a8ff95321586c6024edb9f4e44e7a"
+  integrity sha512-cnmdzLcUc06JqqxxqK6grALnUhWbR4d5AyzsG5zlXgMW78JmdghofNz5ToDwMq949RZgxXmknBWZWhS+yhns3Q==
+  dependencies:
+    cross-fetch "^3.1.0"
+
+"@supabase/supabase-js@^1.11.10":
+  version "1.11.10"
+  resolved "https://registry.yarnpkg.com/@supabase/supabase-js/-/supabase-js-1.11.10.tgz#7c51c81c3db56cfe2b2e2a17737dea9c11df1b06"
+  integrity sha512-ut7m1QVvKmRAEaPvMNzQdOiaxum2g/25rSDr/bT/NxrHoVKPOTgYP9fM1Yp5hNow4mBqJreW9nqtU+zVYyN+/g==
+  dependencies:
+    "@supabase/gotrue-js" "^1.13.3"
+    "@supabase/postgrest-js" "^0.28.1"
+    "@supabase/realtime-js" "^1.0.9"
+    "@supabase/storage-js" "^1.0.2"
+
 "@surma/rollup-plugin-off-main-thread@^1.1.1":
   version "1.4.2"
   resolved "https://registry.yarnpkg.com/@surma/rollup-plugin-off-main-thread/-/rollup-plugin-off-main-thread-1.4.2.tgz#e6786b6af5799f82f7ab3a82e53f6182d2b91a58"
@@ -3346,6 +3385,13 @@
     "@types/uglify-js" "*"
     "@types/webpack-sources" "*"
     source-map "^0.6.0"
+
+"@types/websocket@^1.0.1":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@types/websocket/-/websocket-1.0.2.tgz#d2855c6a312b7da73ed16ba6781815bf30c6187a"
+  integrity sha512-B5m9aq7cbbD/5/jThEr33nUY8WEfVi6A2YKCTOvw5Ldy7mtsOkqRvGjnzy6g7iMMDsgu7xREuCzqATLDLQVKcQ==
+  dependencies:
+    "@types/node" "*"
 
 "@types/ws@^7.2.0":
   version "7.4.1"
@@ -5762,6 +5808,13 @@ cross-fetch@^2.1.0:
   dependencies:
     node-fetch "2.1.2"
     whatwg-fetch "2.0.4"
+
+cross-fetch@^3.0.6, cross-fetch@^3.1.0:
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-3.1.4.tgz#9723f3a3a247bf8b89039f3a380a9244e8fa2f39"
+  integrity sha512-1eAtFWdIubi6T4XPy6ei9iUFoKpUkIF971QLN8lIvvvwueI65+Nw5haMNKUwfJxabqlIIDODJKGrQ66gxC0PbQ==
+  dependencies:
+    node-fetch "2.6.1"
 
 cross-spawn@7.0.3, cross-spawn@^7.0.0, cross-spawn@^7.0.2:
   version "7.0.3"
@@ -16237,7 +16290,7 @@ websocket-extensions@>=0.1.1:
   resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.4.tgz#7f8473bc839dfd87608adb95d7eb075211578a42"
   integrity sha512-OqedPIGOfsDlo31UNwYbCFMSaO9m9G/0faIHj5/dZFDMFqPTcx6UwqyOy3COEaEOg/9VsGIpdqn62W5KhoKSpg==
 
-websocket@^1.0.32:
+websocket@^1.0.32, websocket@^1.0.34:
   version "1.0.34"
   resolved "https://registry.yarnpkg.com/websocket/-/websocket-1.0.34.tgz#2bdc2602c08bf2c82253b730655c0ef7dcab3111"
   integrity sha512-PRDso2sGwF6kM75QykIesBijKSVceR6jL2G8NGYyq2XrItNC2P5/qL5XeR056GhA+Ly7JMFvJb9I312mJfmqnQ==
