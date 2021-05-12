@@ -1,7 +1,5 @@
 import React from 'react'
-import { GiHamburgerMenu } from 'react-icons/gi'
 import { NavLink } from 'react-router-dom'
-import logo from '../../assets/cryptify-logo.png'
 
 interface INavbar {
     header: string;

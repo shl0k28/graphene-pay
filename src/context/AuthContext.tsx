@@ -7,13 +7,15 @@ interface UserState {
     loginWithEmail: (email: string, password: string) => Promise<firebase.auth.UserCredential> | null,
     createUser: (email: string, password: string) => Promise<firebase.auth.UserCredential> | null
     logout: () => Promise<void> | void;
+    googleSignIn: () => Promise<firebase.auth.UserCredential> | void
 }
 
 const init: UserState = {
     user: null,
     loginWithEmail: (email: string, password: string) => null,
     createUser: (email: string, password: string) => null,
-    logout: () => {}
+    logout: () => {},
+    googleSignIn: () => {}
 }
 
 const UserContext = React.createContext(init)
@@ -55,6 +57,12 @@ const UserContextProvider: React.FC = ({children}) => {
         return auth.createUserWithEmailAndPassword(email, password)
     }
 
+    //signin with googles
+    const googleSignIn = () => {
+        var provider = new firebase.auth.GoogleAuthProvider()
+        return auth.signInWithPopup(provider)
+    }
+
     //sign out
     const logout = () => {
         return auth.signOut()
@@ -64,7 +72,8 @@ const UserContextProvider: React.FC = ({children}) => {
         user: currentUser,
         loginWithEmail,
         logout, 
-        createUser
+        createUser,
+        googleSignIn
     }
 
     return(
