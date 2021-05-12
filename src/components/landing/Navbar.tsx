@@ -1,7 +1,5 @@
 import React from 'react'
-import { GiHamburgerMenu } from 'react-icons/gi'
 import { NavLink } from 'react-router-dom'
-import logo from '../../assets/cryptify-logo.png'
 
 interface INavbar {
     header: string;
@@ -21,7 +19,7 @@ const Navbar: React.FC = () => {
             </div>
             <div className="flex items-center space-x-4  w-full justify-end">
                 {/* <GiHamburgerMenu className="text-xl lg:hidden text-gray-900"/> */}
-                <NavLink to='/login' type="button" className="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white transition ease-in duration-200 text-center text-sm font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                <NavLink to='/dashboard' type="button" className="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white transition ease-in duration-200 text-center text-sm font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
                     Get Started
                 </NavLink>
                 <NavLink to='/test' type="button" className="py-2 px-4  bg-gray-800 hover:bg-gray-700 focus:ring-gray-500 focus:ring-offset-gray-200 text-white transition ease-in duration-200 text-center text-sm font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
