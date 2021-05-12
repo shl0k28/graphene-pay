@@ -1,7 +1,7 @@
 import React from 'react'
 import wtlist from '../../assets/waitlist.svg'
 import axios from 'axios'
-import { testApiUrl } from '../..'
+import { testApiUrl, prodApiUrl} from '../..'
 import { getIpDetails } from '../../api/ip'
 
 const Waitlist: React.FC = () => {
@@ -36,7 +36,7 @@ const Waitlist: React.FC = () => {
     const addToWaitlist = async () => {
         console.log(`Beginning function`)
         if(pattern.test(email)){
-            const res = await axios.post(`${testApiUrl}/addToWaitlist`, {
+            const res = await axios.post(`${prodApiUrl}/addToWaitlist`, {
                 email,
                 ip_address: ipDetails,
                 latitude,
