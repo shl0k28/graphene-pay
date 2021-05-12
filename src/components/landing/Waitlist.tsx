@@ -1,23 +1,46 @@
 import React from 'react'
 import wtlist from '../../assets/waitlist.svg'
 import axios from 'axios'
-import { apiUrl } from '../..'
+import { testApiUrl } from '../..'
 import { getIpDetails } from '../../api/ip'
 
 const Waitlist: React.FC = () => {
 
-    var [email, setEmail] = React.useState('')
+    const [email, setEmail] = React.useState('')
+    const [ipDetails, editIpDetails] = React.useState('')
+    const [latitude, setLatitude] = React.useState('')
+    const [longitude, setLongitude] = React.useState('')
+
     var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i)
     
     React.useEffect(() => {
-        getIpDetails()
-    })
-    
+        setIpDetails()
+    }, [])
+
+    //gets position coordinates of the device
+    const getLatAndLon = async () => {
+        navigator.geolocation.getCurrentPosition((position) => {
+            setLatitude(position.coords.latitude.toString())
+            setLongitude(position.coords.longitude.toString())
+        })
+    }
+
+    //sets the IP details in the current component
+    const setIpDetails = async () => {
+        const ip_details = await getIpDetails()
+        editIpDetails(ip_details)
+        getLatAndLon()
+    }
+
+    //sends the user info to cryptify api
     const addToWaitlist = async () => {
         console.log(`Beginning function`)
         if(pattern.test(email)){
-            const res = await axios.post(`${apiUrl}/addToWaitlist`, {
-                email
+            const res = await axios.post(`${testApiUrl}/addToWaitlist`, {
+                email,
+                ip_address: ipDetails,
+                latitude,
+                longitude
             })
             console.log(res.data)
             setEmail('')
@@ -59,7 +82,7 @@ const Waitlist: React.FC = () => {
                 </div>
             </div>
             <div className="hidden lg:block lg:left-2/3 xl:left-1/2 right-0">
-                <img src={wtlist} alt=""/>
+                <img src={wtlist} alt="bitcoin_mining"/>
             </div>
         </div>
     )

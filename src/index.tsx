@@ -35,4 +35,5 @@ const App: React.FC = () => {
 
 const root = document.getElementById('root')
 render(<App />, root)
-export const apiUrl = `http://localhost:8080`
+export const prodApiUrl = `https://cryptify-server.herokuapp.com`
+export const testApiUrl = `http://localhost:8080`
