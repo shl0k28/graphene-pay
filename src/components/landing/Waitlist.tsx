@@ -53,7 +53,7 @@ const Waitlist: React.FC = () => {
     }
 
     return(        
-        <div style={{fontFamily:"'Krub', sans-serif"}} className=" px-6 py-6  md:py-12 md:px-12 lg:py-16 lg:px-16 xl:flex xl:items-center">
+        <div style={{fontFamily:"'Poppins', sans-serif"}} className=" px-6 py-6  md:py-12 md:px-12 lg:py-16 lg:px-16 xl:flex xl:items-center">
             <div className=" relative px-4 py-6 overflow-hidden sm:px-6 sm:py-8 lg:p-12 xl:p-16">
                 <h2 className="text-2xl font-semibold font-display text-gray-900 sm:text-3xl">
                     Join our exclusive waitlist!
@@ -74,7 +74,7 @@ const Waitlist: React.FC = () => {
                                     placeholder="Email"
                                 />
                             </div>
-                            <button onClick={addToWaitlist} className="flex-shrink-0 px-4 py-2 text-base font-semibold text-white bg-indigo-600 rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200" type="submit">
+                            <button onClick={addToWaitlist} className="flex-shrink-0 px-4 py-2 text-base font-semibold text-white bg-blue-600 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-indigo-200" type="submit">
                                 Subscribe
                             </button>
                         </div>

@@ -7,6 +7,8 @@ import firebase from 'firebase'
 
 //generate random id's
 import { v4 as uuidv4} from 'uuid'
+import axios from 'axios'
+import { testApiUrl } from '../..'
 
 interface IGatewayModal {
     setNewGateway: React.Dispatch<React.SetStateAction<boolean>>;
@@ -27,36 +29,23 @@ const NewGatewayModal: React.FC<IGatewayModal> = ({
     const addressRef = React.useRef<HTMLInputElement | null>(null)
 
     const createNewGateway = async () => {
-        var name = nameRef.current?.value
-        var site = siteRef.current?.value
-        var eth_address = addressRef.current?.value
-        console.log(`Name ${name}`)
-        if(name && site && eth_address){
-            try {
-                var res = await firebaseRef.collection('users').doc(user?.uid).collection('payment_gateways').add({
-                    name,
-                    site,
-                    eth_address,
-                    client_id: uuidv4(),
-                    created_at: firebase.firestore.Timestamp.now()   
-                })
-                setNewGateway(false)
-            }
-            catch(err){
-                console.error(err)
-            }
+        var options = {
+            gateway_name: nameRef.current?.value,
+            gateway_url: siteRef.current?.value,
+            eth_address: addressRef.current?.value,
+            user_id: user?.uid
         }
-        else {
-            console.log(`Function not working`)
-        }
+        const res = await axios.post(`${testApiUrl}/creategateway`, options)
+        console.log(res.data)
+        window.location.reload()
     }
 
     return(
-        <div className={`${modalContainer}`}>
+        <div className={`${modalContainer} font-mono`}>
             <div className="relative w-auto my-12 mx-auto max-w-5xl">
                 <div className="border shadow-2xl relative flex flex-col w-full bg-white outline-none focus:outline-none">
                     <div className="px-8 py-4 space-y-4 mx-2">
-                        <h1 className="text-3xl">Create a new Gateway</h1>
+                        <h1 className="text-3xl flex justify-between items-start text-indigo-600">New Gateway<span className="text-xl text-red-500 cursor-pointer" onClick={() => setNewGateway(false)}>X</span></h1>
                         <div className="space-y-1">
                             <div className="flex items-center justify-between">
                                 <label htmlFor="">Enter a name for your gateway*</label>
@@ -85,8 +74,12 @@ const NewGatewayModal: React.FC<IGatewayModal> = ({
                             </div>
                         </div>
                         <div className="flex justify-center items-center space-x-16">
-                            <button onClick={() => createNewGateway()} className="bg-green-700 px-2 py-1 text-white">Create</button>
-                            <button onClick={() => setNewGateway(false)} className="bg-red-500 px-2 py-1 text-white">Cancel</button>
+                            <button 
+                                onClick={() => createNewGateway()} 
+                                className="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white transition ease-in duration-200 text-center text-md font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg w-full tracking-wider"
+                            >
+                                Create
+                            </button>
                         </div>
                     </div>
                 </div>

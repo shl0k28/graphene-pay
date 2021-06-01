@@ -31,6 +31,7 @@
     "react-loader-spinner": "^4.0.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "react-typing-effect": "^2.0.5",
     "ripple-lib": "^1.9.4",
     "skynet-js": "^3.0.2",
     "twin.macro": "^2.3.3",

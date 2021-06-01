@@ -11,6 +11,7 @@ import Dashboard from './pages/Dashboard'
 
 import PrivateRoute from './routes/PrivateRoute'
 import UserContextProvider from './context/AuthContext'
+import Payments from './pages/Payment'
 
 
 const App: React.FC = () => {
@@ -25,6 +26,7 @@ const App: React.FC = () => {
 					<Route exact path='/' component={Landing}/>
 					<Route path='/test' component={TestRipple}/>
 					<Route path='/login' component={Login}/>
+					<Route path='/payments/:id' component={Payments}/>
 					<PrivateRoute path='/dashboard' component={Dashboard} />
 				</Switch>
 			</BrowserRouter>
@@ -35,5 +37,6 @@ const App: React.FC = () => {
 
 const root = document.getElementById('root')
 render(<App />, root)
+
 export const prodApiUrl = `https://cryptify-server.herokuapp.com`
 export const testApiUrl = `http://localhost:8080`
