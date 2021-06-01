@@ -12,6 +12,7 @@ import Dashboard from './pages/Dashboard'
 import PrivateRoute from './routes/PrivateRoute'
 import UserContextProvider from './context/AuthContext'
 import Payments from './pages/Payment'
+import PaymentDemo from './pages/PaymentDemo'
 
 
 const App: React.FC = () => {
@@ -25,6 +26,7 @@ const App: React.FC = () => {
 				<Switch>
 					<Route exact path='/' component={Landing}/>
 					<Route path='/test' component={TestRipple}/>
+					<Route path='/demo' component={PaymentDemo} />
 					<Route path='/login' component={Login}/>
 					<Route path='/payments/:id' component={Payments}/>
 					<PrivateRoute path='/dashboard' component={Dashboard} />
