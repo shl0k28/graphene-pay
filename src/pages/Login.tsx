@@ -1,16 +1,19 @@
 import React from 'react'
 import { FaGithub, FaGithubSquare } from 'react-icons/fa'
 import { FcGoogle } from 'react-icons/fc'
+import { useHistory } from 'react-router'
 import Navbar from '../components/landing/Navbar'
 import { useAuth } from '../context/AuthContext'
 
 const Login: React.FC = () => {
     const { googleSignIn } = useAuth()
-    
+    const history = useHistory()
+
     const signInWithGoogle = async () => {
         var res = await googleSignIn()
         if(res){
-            alert(`Thank you for joinining cryptify, we'll get back to you ASAP and schedule a project demo. To the moon🚀`)
+            history.push('/dashboard')        
+            // alert(`Thank you for joinining cryptify, we'll get back to you ASAP and schedule a project demo. To the moon🚀`)
         }
     }
 

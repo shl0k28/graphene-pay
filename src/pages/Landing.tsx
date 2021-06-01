@@ -9,7 +9,7 @@ import Waitlist from '../components/landing/Waitlist'
 
 const Landing: React.FC = () => {
     return(
-        <div className=" overflow-y-auto h-screen w-screen space-y-4">
+        <div className="overflow-y-auto h-screen w-screen space-y-4 bg-gray-100">
             <Navbar/>
             <Hero />
             <Features />

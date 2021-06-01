@@ -9,6 +9,8 @@ import { AiOutlineEdit, AiOutlineMore } from 'react-icons/ai'
 import { IoMdAddCircleOutline } from 'react-icons/io'
 import { firebaseRef } from '../../config/firebase'
 import { useAuth } from '../../context/AuthContext'
+import axios from 'axios'
+import { testApiUrl } from '../..'
 
 const gateways = [
     {
@@ -27,14 +29,6 @@ const gateways = [
     },
 ]
 
-interface IGateway {
-    site: string,
-    created_at: any,
-    client_id: string,
-    name: string,
-    eth_address: string
-}
-
 const UserApps: React.FC = () => {
 
     const { user } = useAuth()
@@ -44,37 +38,19 @@ const UserApps: React.FC = () => {
         console.log('Copied to clipboard')
         setCopyToClip(`${text} copied to clipboard.`)
     }
-
-    const [paymentGateways, setPaymentGateways] = React.useState<
-        Array<IGateway>
-    >([])
+    // @ts-ignore
+    const [paymentGateways, setPaymentGateways] = React.useState<Array<any>>(JSON.parse(localStorage.getItem('user_gateways')) || [])
 
     const getPaymentGateways = async () => {
-        var allGateways: Array<IGateway> = []
-        console.log(`Before: `,allGateways)
-
-        var res = await firebaseRef.
-                        collection('users').
-                        doc(user?.uid).
-                        collection('payment_gateways').
-                        onSnapshot(doc => {
-                            doc.forEach((gateway) => {
-                                var { client_id, created_at, eth_address, site, name} = gateway.data()
-                                var newGateway: IGateway = {
-                                    client_id,
-                                    created_at,
-                                    eth_address,
-                                    name,
-                                    site
-                                }
-                                console.log(newGateway)
-                                // @ts-ignore
-                                allGateways.push(newGateway)
-                                setPaymentGateways(allGateways)
-                            })
-                        })
-        console.log(`After: `, allGateways)
-                
+        try {
+            var res = await axios.post(`${testApiUrl}/showgateways`, {
+                user_id: user?.uid
+            })
+            localStorage.setItem('user_gateways', JSON.stringify(res.data))
+        }
+        catch(err){
+            console.error(err)
+        }
     }
 
     const [newGateway, setNewGateway] = React.useState<boolean>(false)
@@ -94,27 +70,27 @@ const UserApps: React.FC = () => {
                     {
                         paymentGateways.map((app, index) => {
                             return(
-                                <div key={index} className="space-y-4 px-4 py-2 bg-white shadow-md">
-                                    <h1 className="text-xl border-b font-medium">{app.name}</h1>
+                                <div key={index} className="space-y-4 px-4 py-2 bg-white shadow-xl border border-indigo-100 rounded-md">
+                                    <h1 className="text-xl border-b font-medium">{app.gateway_name}</h1>
                                     <div className="flex items-center space-x-2">
-                                        <p>ID: <span className="text-gray-700 bg-gray-200 px-2 py-1 rounded-md">{app.client_id}</span></p>
-                                        <RiFileCopyLine className="text-gray-600 cursor-pointer" onClick={() => copyToClipboard(app.client_id)}/>
+                                        <p>ID: <span className="text-gray-700 bg-gray-200 px-2 py-1 rounded-md">{app.gateway_id}</span></p>
+                                        <RiFileCopyLine className="text-gray-600 cursor-pointer" onClick={() => copyToClipboard(app.gateway_id)}/>
                                     </div>
                                     <div className="flex items-center">
                                         <CgWebsite />
-                                        <p className="text-gray-800">: {app.site}</p>
+                                        <p className="text-gray-800">: {app.gateway_url}</p>
                                     </div>
                                     <div className="flex items-center">
                                         <SiEthereum />
                                         <p className="text-sm">: {app.eth_address}</p>
                                     </div>
                                     <div className="flex items-center justify-center space-x-4">
-                                        <button className="flex items-center bg-gray-800 px-2 py-1 text-sm text-gray-200">
+                                        <button className="flex items-center bg-gray-900 px-2 py-1 text-sm text-gray-200">
                                             Edit <AiOutlineEdit className="ml-2"/>
                                         </button>
-                                        <button className="flex items-center">
+                                        {/* <button className="flex items-center">
                                             More <AiOutlineMore />
-                                        </button> 
+                                        </button>  */}
                                     </div>
                                 </div>
                             )

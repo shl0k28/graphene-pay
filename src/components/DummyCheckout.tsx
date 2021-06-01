@@ -15,6 +15,7 @@ import { getTokens } from '../api/covalent'
 
 import BN from 'bn.js'
 import PaymentTestNew from './PaymentTestNew'
+import { NavLink } from 'react-router-dom'
 
 const buttonClass = `focus:outline-none w-full hover:shadow-md p-2 text-gray-100 flex items-center justify-center`
 
@@ -47,10 +48,10 @@ const DummyCheckout: React.FC = () => {
                         Credit/Debit Card
                         <BiCreditCard className="ml-4 text-xl"/>
                     </button>
-                    <button onClick={() => setIsPayment(true)} className={`${buttonClass} bg-yellow-500 hover:bg-yellow-400`}>
-                        Cryptocurrencies
+                    <NavLink to="/payments/53c7a74e-7a3b-480f-a2e8-71bbb28e22cb" target="_blank" className={`${buttonClass} bg-yellow-500 hover:bg-yellow-400`}>
+                        Pay with Crypto
                         <FaEthereum className="ml-4 text-xl"/>
-                    </button>
+                    </NavLink>
                 </div>
             </div>
             {

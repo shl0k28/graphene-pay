@@ -9,10 +9,10 @@ const footerContainer = `px-8 py-4 lg:px-16 bg-gray-900 flex font-mono
 `
 const Footer: React.FC = () => {
     return(
-        <footer className="text-indigo-100 bg-gray-900">
+        <footer className="text-indigo-100">
             <div className={`${footerContainer}`}>   
                 <div className="lg:text-lg">
-                    <p>&copy;indebit Labs.</p>
+                    <p>&copy;cryptify Labs.</p>
                 </div>
                 <div className="hidden lg:block">
                     <div className="flex items-center space-x-4 text-gray-500">        
