@@ -1,5 +1,5 @@
 import React from 'react'
-import { InlineWidget, openPopupWidget } from 'react-calendly'
+import { openPopupWidget } from 'react-calendly'
 // @ts-ignore
 import ReactTypingEffect from 'react-typing-effect'
 import { NavLink } from 'react-router-dom'

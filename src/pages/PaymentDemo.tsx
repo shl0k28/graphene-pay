@@ -8,9 +8,14 @@ import walletconnect from '../assets/walletconnect.svg'
 
 const PaymentDemo: React.FC = () => {
 
+    const [accountAddress, setAccountAddress] = React.useState<string | null>(null)
+    const [accountBalance, setAccountBalance] = React.useState<string | null>(null)
+    const [signer, setSigner] = React.useState<ethers.providers.JsonRpcSigner | null>(null)
+
     const merchantName = `Cryptify Technologies Inc.`
     const warning_message = `PLEASE NOTE THAT THIS GATEWAY IS NOT FOT TRANSFERRING REAL CRYPTO, KINDLY TEST IT WITH FAUCET CURRENCY ONLY
     `
+    const merchantAddress = `0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266`
     // @ts-ignore
     const globalEthereum = window.ethereum
     
@@ -24,12 +29,26 @@ const PaymentDemo: React.FC = () => {
             await requestAccount()
             const provider = new ethers.providers.Web3Provider(globalEthereum)
             const signer = provider.getSigner()
+            setSigner(signer)
             const accountAddress = await signer.getAddress()
+            setAccountAddress(accountAddress)
+            
             const accountBalance = await signer.getBalance()
-            console.log(`Address: `, accountAddress, `Balance:`, ethers.utils.formatUnits(accountBalance, 18))
+            const balance = ethers.utils.formatUnits(accountBalance, 18)
+            setAccountBalance(balance)
+
+            console.log(`Address: `, accountAddress, `Balance:`, balance)
         }
     }
 
+    const confirmPayment = async (signer: ethers.providers.JsonRpcSigner) => {
+        const ctx = await signer.sendTransaction({
+            to: merchantAddress,
+            value: ethers.utils.parseEther("0.3")
+        })
+        console.log(ctx)
+    }
+    
     return(
         <div className="bg-gray-100 h-screen w-screen overflow-auto" style={{fontFamily:"'Rubik', sans-serif"}}>
             {/* Top Bar */}
@@ -91,6 +110,16 @@ const PaymentDemo: React.FC = () => {
                 <div>
                     <p className="text-red-500 text-center">** {warning_message} **</p>
                 </div>
+                {
+                    accountAddress && 
+                    <div className="flex justify-center">
+                        <div>
+                            <p>Your account: {accountAddress}</p>
+                            <p className="text-center">{accountBalance}</p>
+                            <button className="p-2 w-full bg-gray-900 text-white">Pay</button>
+                        </div>
+                    </div>
+                }
             </section>
         </div>
     )
