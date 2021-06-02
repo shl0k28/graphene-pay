@@ -16,8 +16,8 @@ const Navbar: React.FC = () => {
             <div className="flex items-center space-x-8  w-full justify-end text-gray-900" style={{fontFamily:"'Krub', sans-serif"}}>
                 <NavLink to='/login' className="font-semibold hover:text-blue-600 hidden md:block">Sign In</NavLink>
                 <NavLink to='/' className="font-semibold hover:text-blue-600 hidden md:block">Docs</NavLink>
-                <NavLink to='/dashboard' type="button" className="py-2 px-4  bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white transition ease-in duration-200 text-center text-sm font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded">
-                    Get Started
+                <NavLink to='/demo' type="button" className="py-2 px-4 border-gray-600 bg-gray-900 hover:bg-gray-700 border focus:ring-gray-900 focus:ring-offset-gray-200 text-gray-100 transition ease-in duration-200 text-center text-sm font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded">
+                    Test Demo
                 </NavLink>
             </div>
         </nav>
