@@ -69,7 +69,7 @@ const PaymentDemo: React.FC = () => {
                     {/*  Orderbook Card Component */}
                     <div className="w-full border max-w-md bg-white rounded-md shadow-md space-y-2">
                         <div className="bg-gray-800 text-gray-50 w-full rounded-md rounded-b-none py-2 px-4">
-                            <h2 className="text-center text-gray-100 text-lg">You are paying to</h2>
+                            <h2 className="text-center text-gray-400 text-lg">You are paying to</h2>
                             <h1 className="text-center text-2xl">{merchantName}</h1>
                         </div>
                         <div className="py-2 px-4 space-y-4">
