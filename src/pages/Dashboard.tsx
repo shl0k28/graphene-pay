@@ -8,8 +8,7 @@ const Dashboard: React.FC = () => {
 
     return(
         <div className="h-screen w-screen bg-gray-100 overflow-x-hidden">
-            <Topbar />
-            <UserApps />
+            <Topbar/>
         </div>
     )
 }
