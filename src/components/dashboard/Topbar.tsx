@@ -61,7 +61,7 @@ const Topbar = () => {
                 >
                     cryptify
                 </h1>
-                <button onClick={logout} className="flex items-center text-gray-700">
+                <button onClick={logout} className="flex items-center text-gray-600 ">
                     <FiLogOut className="mr-2"/><p>Log Out</p>
                 </button>
             </nav>

@@ -31,18 +31,21 @@ const Hero = () => {
         <section className="px-8 space-y-8 md:py-16 py-2" style={{fontFamily:"'Rubik', sans-serif"}}>
             <div className="md:flex md:px-16 text-left text-2xl font-bold lg:text-start lg:text-5xl text-gray-800 justify-between items-center">
                 <div>
-                    ACCEPT{' '}
-                    <span className="text-blue-600">
-                        <ReactTypingEffect 
-                            text={['Ethereum', '$ USD Coin', 'DAI', 'Celo', 'Tezos', 'Matic', 'Cardano ADA']}
-                            speed={100}
-                            eraseDelay={5000}
-                            eraseSpeed={100}
-                            cursor="_"
-                            typingDelay={500}
+                    ACCEPT{' '} <span className="text-blue-600">CRYPTO</span>
+                    <p>FOR YOUR STORE</p>
+                    <p className="mt-4 text-gray-700 md:text-2xl">
+                        Support{` `}
+                        <span className="text-blue-600">
+                            <ReactTypingEffect 
+                                text={['Ethereum', '$ USD Coin', 'DAI', 'Celo', 'Tezos', 'Matic', 'Cardano ADA']}
+                                speed={100}
+                                eraseDelay={5000}
+                                eraseSpeed={100}
+                                cursor="_"
+                                typingDelay={500}
                             />{' '}
-                    </span>
-                    <p>FOR YOUR ONLINE STORE</p>
+                        </span>
+                    </p>
                     <div className="text-xl mt-8 font-medium">
                         <ul className="space-y-4">
                             {
@@ -70,7 +73,7 @@ const Hero = () => {
                     </div>
                 </div>
                 <img src={payment} className="h-full lg:w-2/5 mt-4 md:-mt-8 hidden md:block"/>
-                <img src={paymentSmall} className="h-full md:hidden mt-4"/>
+                <img src={paymentSmall} className="h-full md:hidden mt-16"/>
             </div>
         </section>
     )
